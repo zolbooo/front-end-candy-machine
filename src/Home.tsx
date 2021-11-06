@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import Countdown from "react-countdown";
-import { Button, CircularProgress, Snackbar } from "@material-ui/core";
-import Alert from "@material-ui/lab/Alert";
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import Countdown from 'react-countdown';
+import { Button, CircularProgress, Snackbar } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
 
-import * as anchor from "@project-serum/anchor";
+import * as anchor from '@project-serum/anchor';
 
-import { LAMPORTS_PER_SOL } from "@solana/web3.js";
+import { LAMPORTS_PER_SOL } from '@solana/web3.js';
 
-import { useAnchorWallet } from "@solana/wallet-adapter-react";
-import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
+import { useAnchorWallet } from '@solana/wallet-adapter-react';
+import { WalletDialogButton } from '@solana/wallet-adapter-material-ui';
 
 import {
   CandyMachine,
@@ -17,7 +17,7 @@ import {
   getCandyMachineState,
   mintOneToken,
   shortenAddress,
-} from "./candy-machine";
+} from './candy-machine';
 
 const ConnectButton = styled(WalletDialogButton)``;
 
@@ -48,7 +48,7 @@ const Home = (props: HomeProps) => {
 
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
-    message: "",
+    message: '',
     severity: undefined,
   });
 
@@ -70,7 +70,7 @@ const Home = (props: HomeProps) => {
       } = await getCandyMachineState(
         wallet as anchor.Wallet,
         props.candyMachineId,
-        props.connection
+        props.connection,
       );
 
       setItemsAvailable(itemsAvailable);
@@ -91,39 +91,39 @@ const Home = (props: HomeProps) => {
           candyMachine,
           props.config,
           wallet.publicKey,
-          props.treasury
+          props.treasury,
         );
 
         const status = await awaitTransactionSignatureConfirmation(
           mintTxId,
           props.txTimeout,
           props.connection,
-          "singleGossip",
-          false
+          'singleGossip',
+          false,
         );
 
         if (!status?.err) {
           setAlertState({
             open: true,
-            message: "Congratulations! Mint succeeded!",
-            severity: "success",
+            message: 'Congratulations! Mint succeeded!',
+            severity: 'success',
           });
         } else {
           setAlertState({
             open: true,
-            message: "Mint failed! Please try again!",
-            severity: "error",
+            message: 'Mint failed! Please try again!',
+            severity: 'error',
           });
         }
       }
     } catch (error: any) {
       // TODO: blech:
-      let message = error.msg || "Minting failed! Please try again!";
+      let message = error.msg || 'Minting failed! Please try again!';
       if (!error.msg) {
-        if (error.message.indexOf("0x138")) {
-        } else if (error.message.indexOf("0x137")) {
+        if (error.message.indexOf('0x138')) {
+        } else if (error.message.indexOf('0x137')) {
           message = `SOLD OUT!`;
-        } else if (error.message.indexOf("0x135")) {
+        } else if (error.message.indexOf('0x135')) {
           message = `Insufficient funds to mint. Please fund your wallet.`;
         }
       } else {
@@ -138,7 +138,7 @@ const Home = (props: HomeProps) => {
       setAlertState({
         open: true,
         message,
-        severity: "error",
+        severity: 'error',
       });
     } finally {
       if (wallet) {
@@ -168,7 +168,7 @@ const Home = (props: HomeProps) => {
   return (
     <main>
       {wallet && (
-        <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
+        <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || '')}</p>
       )}
 
       {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
@@ -189,12 +189,12 @@ const Home = (props: HomeProps) => {
             variant="contained"
           >
             {isSoldOut ? (
-              "SOLD OUT"
+              'SOLD OUT'
             ) : isActive ? (
               isMinting ? (
                 <CircularProgress />
               ) : (
-                "MINT"
+                'MINT'
               )
             ) : (
               <Countdown
@@ -227,7 +227,7 @@ const Home = (props: HomeProps) => {
 interface AlertState {
   open: boolean;
   message: string;
-  severity: "success" | "info" | "warning" | "error" | undefined;
+  severity: 'success' | 'info' | 'warning' | 'error' | undefined;
 }
 
 const renderCounter = ({ days, hours, minutes, seconds, completed }: any) => {
