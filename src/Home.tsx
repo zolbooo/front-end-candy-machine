@@ -20,6 +20,7 @@ import {
 
 import { Main } from './components/layout/Main';
 import { ConnectWallet } from './components/ConnectWallet';
+import { MintSection } from './widgets/MintSection';
 
 const CounterText = styled.span``; // add your styles here
 
@@ -168,6 +169,7 @@ const Home = (props: HomeProps) => {
   return (
     <Main>
       {!wallet && <ConnectWallet />}
+      <MintSection />
 
       {wallet && (
         <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || '')}</p>
