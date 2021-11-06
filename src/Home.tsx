@@ -163,6 +163,11 @@ const Home = (props: HomeProps) => {
     props.candyMachineId,
     props.connection,
   ]);
+  useEffect(() => {
+    const interval = setInterval(refreshCandyMachineState, 5000);
+    return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [wallet]);
 
   return (
     <Main>
