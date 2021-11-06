@@ -19,6 +19,8 @@ import {
   shortenAddress,
 } from './candy-machine';
 
+import { Main } from './components/layout/Main';
+
 const ConnectButton = styled(WalletDialogButton)``;
 
 const CounterText = styled.span``; // add your styles here
@@ -166,7 +168,7 @@ const Home = (props: HomeProps) => {
   ]);
 
   return (
-    <main>
+    <Main>
       {wallet && (
         <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || '')}</p>
       )}
@@ -220,7 +222,7 @@ const Home = (props: HomeProps) => {
           {alertState.message}
         </Alert>
       </Snackbar>
-    </main>
+    </Main>
   );
 };
 
