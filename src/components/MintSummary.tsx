@@ -87,6 +87,8 @@ export function MintSummary({
   redeemed: number;
   children: ReactNode;
 }) {
+  const progress =
+    totalAvailable === 0 ? 0 : Math.floor((redeemed / totalAvailable) * 100);
   return (
     <Card>
       <WalletAddress>
@@ -96,10 +98,10 @@ export function MintSummary({
       <TotalAvailable>
         <Text>Total available</Text>
         <ProgressContainer>
-          <ProgressBar animated now={totalAvailable} />
+          <ProgressBar animated now={progress} />
         </ProgressContainer>
         <CurrentProgress>
-          <Text>{`${totalAvailable}%`}</Text>
+          <Text>{`${progress}%`}</Text>
           <Text>100%</Text>
         </CurrentProgress>
       </TotalAvailable>
