@@ -58,8 +58,6 @@ const Home = (props: HomeProps) => {
 
   const refreshCandyMachineState = () => {
     (async () => {
-      if (!wallet) return;
-
       const {
         candyMachine,
         goLiveDate,
