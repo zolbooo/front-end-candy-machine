@@ -9,7 +9,6 @@ import * as anchor from '@project-serum/anchor';
 import { LAMPORTS_PER_SOL } from '@solana/web3.js';
 
 import { useAnchorWallet } from '@solana/wallet-adapter-react';
-import { WalletDialogButton } from '@solana/wallet-adapter-material-ui';
 
 import {
   CandyMachine,
@@ -20,8 +19,7 @@ import {
 } from './candy-machine';
 
 import { Main } from './components/layout/Main';
-
-const ConnectButton = styled(WalletDialogButton)``;
+import { ConnectWallet } from './components/ConnectWallet';
 
 const CounterText = styled.span``; // add your styles here
 
@@ -169,6 +167,8 @@ const Home = (props: HomeProps) => {
 
   return (
     <Main>
+      {!wallet && <ConnectWallet />}
+
       {wallet && (
         <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || '')}</p>
       )}
@@ -182,9 +182,7 @@ const Home = (props: HomeProps) => {
       {wallet && <p>Remaining: {itemsRemaining}</p>}
 
       <MintContainer>
-        {!wallet ? (
-          <ConnectButton>Connect Wallet</ConnectButton>
-        ) : (
+        {wallet && (
           <MintButton
             disabled={isSoldOut || isMinting || !isActive}
             onClick={onMint}
