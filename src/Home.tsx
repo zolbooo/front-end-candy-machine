@@ -180,6 +180,7 @@ const Home = (props: HomeProps) => {
         <MintButton
           disabled={!wallet || isSoldOut || isMinting || !isActive}
           onClick={onMint}
+          color="primary"
           variant="contained"
         >
           {isSoldOut ? (
