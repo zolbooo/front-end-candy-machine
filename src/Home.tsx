@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Countdown from 'react-countdown';
-import { Button, CircularProgress, Snackbar } from '@material-ui/core';
+import { CircularProgress, Snackbar } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 
 import * as anchor from '@project-serum/anchor';
@@ -19,12 +19,12 @@ import {
 } from './candy-machine';
 
 import { Main } from './components/layout/Main';
+import { MintButton } from './components/MintButton';
 import { ConnectWallet } from './components/ConnectWallet';
+
 import { MintSection } from './widgets/MintSection';
 
 const CounterText = styled.span``; // add your styles here
-
-const MintButton = styled(Button)``; // add your styles here
 
 export interface HomeProps {
   candyMachineId: anchor.web3.PublicKey;
