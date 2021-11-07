@@ -12,6 +12,10 @@ const Section = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
+
+  @media screen and (min-width: 720px) {
+    padding: 0 6rem;
+  }
 `;
 
 const Cover = styled.div`
