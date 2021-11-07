@@ -71,7 +71,8 @@ const Stats = styled.div`
 `;
 
 const Content = styled.div`
-  margin-top: 10rem;
+  margin-top: 9rem;
+  margin-bottom: 1rem;
   display: flex;
   justify-content: center;
 `;
