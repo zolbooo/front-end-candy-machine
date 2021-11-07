@@ -101,7 +101,7 @@ export function MintSummary({
       <TotalAvailable>
         <Text>Total redeemed</Text>
         <ProgressContainer>
-          <ProgressBar animated now={progress} />
+          <ProgressBar animated now={progress} variant="warning" />
         </ProgressContainer>
         <CurrentProgress>
           <Text>{redeemed}</Text>
