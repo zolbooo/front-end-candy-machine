@@ -69,7 +69,8 @@ const CurrentProgress = styled.div`
 `;
 
 const Stats = styled.div`
-  margin-top: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 `;
 
 const Content = styled.div`
