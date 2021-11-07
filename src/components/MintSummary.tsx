@@ -9,8 +9,10 @@ const Text = styled.span`
 
 const Card = styled.div`
   @media screen and (max-width: 480px) {
-    margin-top: 1rem;
     min-width: calc(100vw - 40px);
+  }
+  @media screen and (max-width: 840px) {
+    margin-top: 2rem;
   }
   width: 450px;
   height: 100%;
@@ -71,8 +73,7 @@ const Stats = styled.div`
 `;
 
 const Content = styled.div`
-  margin-top: 9rem;
-  margin-bottom: 1rem;
+  margin-top: 1.5rem;
   display: flex;
   justify-content: center;
 `;
@@ -97,13 +98,13 @@ export function MintSummary({
         <Address>{walletAddress ?? null}</Address>
       </WalletAddress>
       <TotalAvailable>
-        <Text>Total available</Text>
+        <Text>Total redeemed</Text>
         <ProgressContainer>
           <ProgressBar animated now={progress} />
         </ProgressContainer>
         <CurrentProgress>
-          <Text>{`${progress}%`}</Text>
-          <Text>100%</Text>
+          <Text>{redeemed}</Text>
+          <Text>{totalAvailable}</Text>
         </CurrentProgress>
       </TotalAvailable>
       <Stats>
