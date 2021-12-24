@@ -169,7 +169,7 @@ const Home = (props: HomeProps) => {
 
   return (
     <Main>
-      {!wallet && <ConnectWallet />}
+      {/* {!wallet && <ConnectWallet />} */}
       <MintSection
         totalAvailable={itemsAvailable}
         walletAddress={
@@ -179,7 +179,7 @@ const Home = (props: HomeProps) => {
       >
         <MintButton
           disabled={!wallet || isSoldOut || isMinting || !isActive}
-          onClick={onMint}
+          // onClick={onMint}
           color="primary"
           variant="contained"
         >
